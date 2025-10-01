@@ -1,0 +1,27 @@
+# Core Dependencies
+sentence-transformers>=2.2.2    # 임베딩 모델
+chromadb>=0.4.0                 # 벡터 DB
+torch>=2.0.0                    # PyTorch CPU 버전 (임베딩 엔진용)
+# 설치 시: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# Document Parsers
+pypdf>=3.15.0                   # PDF 파싱
+python-docx>=1.0.0              # DOCX 파싱
+lxml>=4.9.0                     # HWPX(한글) 파싱용
+python-pptx>=0.6.21             # PPTX 파싱
+openpyxl>=3.1.0                 # XLSX 파싱
+
+# CLI & Utils
+click>=8.1.0                    # CLI 프레임워크
+pyyaml>=6.0                     # 설정 파일 관리
+rich>=13.0.0                    # 예쁜 CLI 출력
+tqdm>=4.65.0                    # 진행률 표시
+
+# Development Tools (optional)
+pytest>=7.4.0                   # 테스트
+black>=23.0.0                   # 코드 포맷터
+flake8>=6.0.0                   # 린터
+
+# Deployment
+pyinstaller>=5.13.0             # exe 빌드용
+
