@@ -17,7 +17,7 @@
 사용자 → CLI → [검색엔진 + 임베딩] → ChromaDB → 검색 결과
 ```
 
-상세 아키텍처는 [docs/아키텍처.md](docs/아키텍처.md) 참고
+상세 아키텍처는 [docs/dev/아키텍처.md](docs/dev/아키텍처.md) 참고
 
 ## 📦 설치
 
@@ -70,7 +70,7 @@ build.bat
 # 결과: dist/memorag.exe
 ```
 
-자세한 내용은 [배포 가이드](docs/배포_가이드.md) 참고
+자세한 내용은 [배포 가이드](docs/dev/배포_가이드.md) 참고
 
 ## 🚀 사용법
 
@@ -132,50 +132,115 @@ python src/cli/main.py clean --index 5학년부_2025_09
 
 ## 🛠️ 개발
 
-### 프로젝트 구조 (예정)
+### 프로젝트 구조
 
 ```
-jobqa/
-├── src/
-│   ├── core/           # 핵심 엔진 (임베딩, 파서, 검색)
+memoRAG/
+├── src/                 # 소스 코드
+│   ├── core/           # 핵심 엔진 (파서, 임베딩, 검색)
 │   ├── services/       # 비즈니스 로직
 │   ├── cli/            # CLI 인터페이스
 │   └── utils/          # 유틸리티
 ├── tests/              # 테스트
 ├── docs/               # 문서
+│   ├── dev/           # 개발자 문서
+│   └── user/          # 사용자 문서
+├── dist/               # 빌드 결과
+│   └── memorag.exe    # 실행 파일
 └── requirements.txt
 ```
 
-### 테스트 실행
+### 개발 시작
 
 ```bash
+# 저장소 클론
+git clone https://github.com/SuperBallista/memoRAG.git
+cd memoRAG
+
+# 가상환경 설정
+python -m venv venv
+.\venv\Scripts\activate
+
+# 의존성 설치
+pip install -r requirements.txt
+
+# 실행
+python run.py --help
+```
+
+### 테스트
+
+```bash
+# 유닛 테스트
 pytest tests/
+
+# 통합 테스트
+python test_simple.py
 ```
 
 ### 배포 (exe 빌드)
 
 ```bash
-pyinstaller --onefile --name rag_local src/cli/main.py
-# → dist/rag_local.exe 생성
+# 빌드
+python build_exe.py
+
+# 결과
+dist/memorag.exe
 ```
+
+자세한 개발 가이드는 [docs/dev/개발_가이드.md](docs/dev/개발_가이드.md) 참고
 
 ## 🗺️ 로드맵
 
-- [x] Phase 1: CLI 기본 기능 (현재)
-- [ ] Phase 2: Tkinter GUI
-- [ ] Phase 3: FastAPI WebUI
-- [ ] Phase 4: LLM 연동 (요약, 생성형 답변)
+- ✅ **v0.1.0** (완료): CLI 기본 기능, 7가지 파일 형식, exe 배포
+- 🔥 **v0.2.0** (최우선): **GUI + 모던 UX/UI 디자인**
+- 🌐 **v0.3.0** (높음): **클라우드 연동** (Notion, Google Drive, OneNote)
+- 🤖 **v0.4.0** (중기): LLM 요약 답변
+- 🌍 **v0.5.0+** (장기): WebUI, 고급 기능
+
+자세한 로드맵: [향후 확장 계획](docs/dev/향후_확장_계획.md)
 
 ## 📚 문서
 
-- [기획 문서](docs/기획문서.txt)
-- [아키텍처 문서](docs/아키텍처.md)
+### 👤 사용자용
+- [빠른 시작 (5분)](docs/user/빠른_시작_가이드.txt)
+- [사용자 가이드](docs/user/사용자_가이드.txt)
+- [부서 공유 방법](docs/user/부서_공유_가이드.txt)
+- [명령어 치트시트](docs/user/명령어_치트시트.txt)
+
+### 💻 개발자용
+- [아키텍처](docs/dev/아키텍처.md)
+- [개발 가이드](docs/dev/개발_가이드.md)
+- [API 문서](docs/dev/API문서.md)
+- [배포 가이드](docs/dev/배포_가이드.md)
+
+### 🤝 기여
+- [CONTRIBUTING.md](CONTRIBUTING.md) - 기여 방법
+- [CHANGELOG.md](CHANGELOG.md) - 변경 이력
+
+## 🌟 특별한 기능
+
+### 인덱스 파일 공유
+원본 문서 없이 **인덱스 파일만 공유**하면 팀원들이 검색 가능!
+- 메신저로 간편하게 전달
+- 직관적인 보안 (파일 삭제 = 데이터 삭제)
+- 버전 관리 용이
 
 ## 📄 라이선스
 
 Apache-2.0
 
+## 🙏 기여
+
+버그 리포트, 기능 제안, Pull Request 모두 환영합니다!
+
+- [Issues](https://github.com/SuperBallista/memoRAG/issues) - 버그/제안
+- [Pull Requests](https://github.com/SuperBallista/memoRAG/pulls) - 코드 기여
+- [CONTRIBUTING.md](CONTRIBUTING.md) - 기여 가이드
+
 ---
 
-**Made for Everyone - 교사, 직장인, 연구자 모두를 위해**
+**Made for Everyone - 교사, 직장인, 연구자 모두를 위해** 🌟
+
+_memoRAG - 메모처럼 저장하고, AI처럼 검색하세요_
 
